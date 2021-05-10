@@ -1,0 +1,16 @@
+[
+{
+  "modid": "lite",
+  "name": "MachineLite",
+  "description": "The Machine Lite.",
+  "version": "B4",
+  "mcversion": "1.12.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["34663"],
+  "credits": "The Forge and FML guys, for making this example",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

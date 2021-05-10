@@ -1,0 +1,15 @@
+{
+  "verbose": false,
+  "compatibilityLevel": "JAVA_8",
+  "package": "com.lite.machinelite.mixin.client",
+  "refmap": "mixins.lite.refmap.json",
+  "mixins": [
+    "IMixinMinecraft",
+    "MixinMinecraft",
+    "entity.MixinEntityPlayerSP",
+    "gui.MixinGuiIngame",
+    "gui.MixinGuiNewChat",
+    "gui.inventory.MixinGuiEditSign",
+    "multiplayer.MixinPlayerControllerMP"
+  ]
+}
