@@ -27,8 +27,9 @@ public class BuildRandom extends Module {
     @Override
     public void onEvent(Event event) {
         if (event instanceof UpdateEvent) {
-            int range = 5;
-            int bound = range * 2;
+            int range = 4;
+            int bound = range * 2 + 1;
+            int attempts = 0;
             BlockPos pos;
 
             if (!checkHeldItem()) {
@@ -38,7 +39,7 @@ public class BuildRandom extends Module {
             try {
                 do {
                     pos = new BlockPos(mc.player.getPosition()).add(random.nextInt(bound) - range, random.nextInt(bound) - range, random.nextInt(bound) - range);
-                } while (--delay < 0 && !tryToPlaceBlock(pos));
+                } while (++attempts < 128 && --delay < 0 && !tryToPlaceBlock(pos));
             } catch (Exception ignore) {
             }
         }

@@ -32,8 +32,9 @@ public class FloorBuilder extends Module {
     @Override
     public void onEvent(Event event) {
         if (event instanceof UpdateEvent) {
-            int range = 5;
-            int bound = range * 2;
+            int range = 4;
+            int bound = range * 2 + 1;
+            int attempts = 0;
             BlockPos pos;
 
             if (!checkHeldItem()) {
@@ -43,9 +44,8 @@ public class FloorBuilder extends Module {
             try {
                 do {
                     pos = new BlockPos(mc.player.getPosition()).add(random.nextInt(bound) - range, -1, random.nextInt(bound) - range);
-                } while (--delay < 0 && !tryToPlaceBlock(pos));
-            } catch (Exception e) {
-                e.printStackTrace();
+                } while (++attempts < 128 && --delay < 0 && !tryToPlaceBlock(pos));
+            } catch (Exception ignore) {
             }
         }
     }
@@ -56,7 +56,7 @@ public class FloorBuilder extends Module {
         }
 
         if (Utils.placeBlock(pos)) {
-            this.delay = 1.0F;
+            this.delay = 3.0F;
             return true;
         }
 
