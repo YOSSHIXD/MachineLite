@@ -45,13 +45,15 @@ public class BuildRandom extends Module {
     }
 
     private boolean tryToPlaceBlock(BlockPos pos) {
-        if (!mc.world.getBlockState(pos).getMaterial().isReplaceable()) {
+        if (pos == null || !mc.world.getBlockState(pos).getMaterial().isReplaceable()) {
             return false;
         }
 
         if (Utils.placeBlock(pos)) {
             this.delay = 3.0F;
+            return true;
         }
+
         return false;
     }
 
