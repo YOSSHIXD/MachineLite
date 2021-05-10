@@ -19,7 +19,7 @@ public class BindCommand extends Command {
                 if (module != null) {
                     if (args.length == 1) {
                         MachineLite.WriteChat(String.format("\2477The current key for \247b%s is \2479%s.", module.getName(), Keyboard.getKeyName(module.getKeyCode())));
-                    } else if (args.length == 2) {
+                    } else {
                         int key = Keyboard.getKeyIndex(args[1].toUpperCase());
                         module.setKeyCode(key);
                         MachineLite.WriteChat("\2477" + module.getName() + " bind to \247f" + Keyboard.getKeyName(module.getKeyCode()) + "\2477.");
