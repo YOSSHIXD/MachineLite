@@ -23,4 +23,5 @@ Command List:
 ・help
 ・bind
 ・toggle
+・modulelist
 ```
