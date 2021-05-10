@@ -2,6 +2,7 @@ package com.lite.machinelite.command;
 
 import com.lite.machinelite.command.impl.BindCommand;
 import com.lite.machinelite.command.impl.HelpCommand;
+import com.lite.machinelite.command.impl.ModuleListCommand;
 import com.lite.machinelite.command.impl.ToggleCommand;
 
 import java.util.ArrayList;
@@ -12,9 +13,10 @@ public class CommandManager {
     public final List<Command> list = new ArrayList<>();
 
     public void initialize() {
-        registerCommand(new BindCommand(new String[]{"bind", "b"}, ""));
-        registerCommand(new ToggleCommand(new String[]{"toggle", "t"}, ""));
-        registerCommand(new HelpCommand(new String[]{"help", "h"}, ""));
+        registerCommand(new BindCommand(new String[]{"bind", "b"}, "Binds a module to a specified key."));
+        registerCommand(new ToggleCommand(new String[]{"toggle", "t"}, "Toggles the module."));
+        registerCommand(new HelpCommand(new String[]{"help", "h"}, "Show help."));
+        registerCommand(new ModuleListCommand(new String[]{"modulelist", "ml"}, "Check Modules"));
     }
 
     public void registerCommand(Command command) {
