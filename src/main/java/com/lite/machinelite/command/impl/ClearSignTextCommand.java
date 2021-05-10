@@ -12,7 +12,7 @@ public class ClearSignTextCommand extends Command {
     @Override
     public void fire(String[] args) {
         if (((AutoSign) MachineLite.getModuleManager().getModuleByString("AutoSign")).getSignText() != null) {
-            ((AutoSign) MachineLite.getModuleManager().getModuleByString("AutoSign")).setSignTexts(null);
+            ((AutoSign) MachineLite.getModuleManager().getModuleByString("AutoSign")).setSignText(null);
             MachineLite.WriteChat("\2477SignText has been cleared.");
         } else {
             MachineLite.WriteChat("\247cAlready cleared.");

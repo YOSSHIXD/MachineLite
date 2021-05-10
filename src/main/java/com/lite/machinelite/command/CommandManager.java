@@ -14,7 +14,7 @@ public class CommandManager {
         registerCommand(new ToggleCommand(new String[]{"toggle", "t"}, "Toggles the module."));
         registerCommand(new HelpCommand(new String[]{"help", "h"}, "Show help."));
         registerCommand(new ModuleListCommand(new String[]{"modulelist", "ml"}, "Check Modules"));
-        registerCommand(new ClearSignTextCommand(new String[]{"clearsign", "clearsigntext", "cst"}, "Clears the AutoSign text."));
+        registerCommand(new ClearSignTextCommand(new String[]{"clearsigntext", "clearsign", "cst"}, "Clears the AutoSign text."));
     }
 
     public void registerCommand(Command command) {
