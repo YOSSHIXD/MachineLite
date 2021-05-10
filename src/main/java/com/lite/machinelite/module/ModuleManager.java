@@ -19,6 +19,7 @@ public class ModuleManager {
         registerModule(new AutoHighway("AutoHighway", 0));
         registerModule(new AutoNameTag("AutoNameTag", 0));
         registerModule(new AntiGhostBlock("AntiGhostBlock", 0));
+        registerModule(new FloorBuilder("FloorBuilder", 0));
     }
 
     private void registerModule(Module module) {
