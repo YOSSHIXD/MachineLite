@@ -9,6 +9,7 @@ The command prefix is ’ . ’
 Module List:
 ```
 ・BuildRandom
+・FloorBuilder
 ・InstantWither
 ・AntiSpam
 ・AutoSign
