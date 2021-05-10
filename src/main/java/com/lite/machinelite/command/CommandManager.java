@@ -1,9 +1,6 @@
 package com.lite.machinelite.command;
 
-import com.lite.machinelite.command.impl.BindCommand;
-import com.lite.machinelite.command.impl.HelpCommand;
-import com.lite.machinelite.command.impl.ModuleListCommand;
-import com.lite.machinelite.command.impl.ToggleCommand;
+import com.lite.machinelite.command.impl.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +14,7 @@ public class CommandManager {
         registerCommand(new ToggleCommand(new String[]{"toggle", "t"}, "Toggles the module."));
         registerCommand(new HelpCommand(new String[]{"help", "h"}, "Show help."));
         registerCommand(new ModuleListCommand(new String[]{"modulelist", "ml"}, "Check Modules"));
+        registerCommand(new ClearSignTextCommand(new String[]{"clearsign", "clearsigntext", "cst"}, "Clears the AutoSign text."));
     }
 
     public void registerCommand(Command command) {

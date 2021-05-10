@@ -1,6 +1,5 @@
 package com.lite.machinelite.module.impl;
 
-import com.lite.machinelite.event.Event;
 import com.lite.machinelite.module.Module;
 import net.minecraft.util.text.ITextComponent;
 
@@ -21,6 +20,10 @@ public class AutoSign extends Module {
     }
 
     public void setSignText(ITextComponent[] signText) {
+        this.signText = signText;
+    }
+
+    public void setSignTexts(ITextComponent[] signText) {
         if (isEnabled() && this.signText == null) {
             this.signText = signText;
         }

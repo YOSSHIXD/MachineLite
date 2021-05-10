@@ -36,7 +36,7 @@ public class MixinGuiEditSign {
     @Inject(method = "actionPerformed", at = @At(value = "INVOKE", target = "Lnet/minecraft/tileentity/TileEntitySign;markDirty()V"))
     protected void actionPerformed(GuiButton button, CallbackInfo ci) {
         if (MachineLite.getModuleManager().getModuleByString("AutoSign").isEnabled()) {
-            ((AutoSign) MachineLite.getModuleManager().getModuleByString("AutoSign")).setSignText(this.tileSign.signText);
+            ((AutoSign) MachineLite.getModuleManager().getModuleByString("AutoSign")).setSignTexts(this.tileSign.signText);
             MachineLite.WriteChat("Set SignText");
         }
     }
