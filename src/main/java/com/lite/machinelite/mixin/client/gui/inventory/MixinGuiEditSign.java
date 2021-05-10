@@ -2,6 +2,7 @@ package com.lite.machinelite.mixin.client.gui.inventory;
 
 import com.lite.machinelite.module.impl.AutoSign;
 import com.lite.machinelite.MachineLite;
+import com.lite.machinelite.utilities.IMC;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiEditSign;
@@ -15,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GuiEditSign.class)
-public class MixinGuiEditSign extends GuiScreen {
+public class MixinGuiEditSign {
     @Shadow
     @Final
     private TileEntitySign tileSign;
@@ -28,7 +29,7 @@ public class MixinGuiEditSign extends GuiScreen {
             this.tileSign.signText[1] = signText[1];
             this.tileSign.signText[2] = signText[2];
             this.tileSign.signText[3] = signText[3];
-            this.mc.displayGuiScreen(null);
+            IMC.mc.displayGuiScreen(null);
         }
     }
 
