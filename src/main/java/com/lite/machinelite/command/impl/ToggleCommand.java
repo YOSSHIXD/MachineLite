@@ -18,7 +18,11 @@ public class ToggleCommand extends Command {
         if (args.length == 1) {
             Module module = MachineLite.getModuleManager().getModuleByString(args[0]);
             if (module != null) {
-                module.toggle();
+                if (module.isEnabled()) {
+                    module.setDisable();
+                } else {
+                    module.setEnable();
+                }
                 MachineLite.WriteChat(String.format("\2477" + module.getName() + " was %s.", module.isEnabled() ? "\247aEnabled" : "\247cDisabled"));
             } else {
                 MachineLite.WriteChat("\247cModule was not found");

@@ -19,16 +19,26 @@ public class Module implements IMC, Listener {
     public void toggle() {
         this.enabled = !this.enabled;
         if (enabled) {
-            MinecraftForge.EVENT_BUS.register(this);
-            MachineLite.getEventManager().register(this);
-            onEnabled();
+            this.setEnable();
             MachineLite.WriteChat("\247aEnabled \2477" + this.getName());
         } else {
-            MinecraftForge.EVENT_BUS.unregister(this);
-            MachineLite.getEventManager().unregister(this);
-            onDisabled();
+            this.setDisable();
             MachineLite.WriteChat("\247cDisabled \2477" + this.getName());
         }
+    }
+
+    public void setEnable() {
+        this.enabled = true;
+        this.onEnabled();
+        MinecraftForge.EVENT_BUS.register(this);
+        MachineLite.getEventManager().register(this);
+    }
+
+    public void setDisable() {
+        this.enabled = false;
+        this.onDisabled();
+        MinecraftForge.EVENT_BUS.unregister(this);
+        MachineLite.getEventManager().unregister(this);
     }
 
     public void onEnabled() {}
