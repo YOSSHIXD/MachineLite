@@ -23,7 +23,7 @@ public class ToggleCommand extends Command {
                 } else {
                     module.setEnable();
                 }
-                MachineLite.WriteChat(String.format("\2477" + module.getName() + " was %s.", module.isEnabled() ? "\247aEnabled" : "\247cDisabled"));
+                MachineLite.WriteChat(String.format("\2477" + module.getName() + " was %s\2477.", module.isEnabled() ? "\247aEnabled" : "\247cDisabled"));
             } else {
                 MachineLite.WriteChat("\247cModule was not found");
             }
