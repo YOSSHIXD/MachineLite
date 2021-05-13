@@ -20,6 +20,9 @@ public class ModuleManager {
         registerModule(new AutoNameTag("AutoNameTag", 0));
         registerModule(new AntiGhostBlock("AntiGhostBlock", 0));
         registerModule(new FloorBuilder("FloorBuilder", 0));
+        registerModule(new AntiMapBan("AntiMapBan", 0));
+
+        registerModule(new Debug("Debug", 0));
     }
 
     private void registerModule(Module module) {
