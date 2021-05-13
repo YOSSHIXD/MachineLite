@@ -1,4 +1,4 @@
-package com.lite.machinelite.mixin.client.gui;
+package com.lite.machinelite.mixin.client;
 
 import com.lite.machinelite.event.impl.RenderOverlayEvent;
 import net.minecraft.client.gui.Gui;

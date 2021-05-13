@@ -1,9 +1,8 @@
-package com.lite.machinelite.mixin.client.gui;
+package com.lite.machinelite.mixin.client;
 
 import com.google.common.collect.Lists;
 import com.lite.machinelite.event.impl.ChatInputEvent;
 import net.minecraft.client.gui.ChatLine;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiNewChat;
 import net.minecraft.util.text.ITextComponent;
 import org.spongepowered.asm.mixin.Final;

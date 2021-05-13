@@ -1,4 +1,4 @@
-package com.lite.machinelite.mixin.client.multiplayer;
+package com.lite.machinelite.mixin.client;
 
 import com.lite.machinelite.event.impl.EventBreakBlock;
 import com.lite.machinelite.utilities.IMC;

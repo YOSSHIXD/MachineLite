@@ -1,4 +1,4 @@
-package com.lite.machinelite.mixin.client.gui.inventory;
+package com.lite.machinelite.mixin.client;
 
 import com.lite.machinelite.module.impl.AutoSign;
 import com.lite.machinelite.MachineLite;
