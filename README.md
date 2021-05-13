@@ -16,6 +16,7 @@ Module List:
 ・AutoHighway
 ・AutoNameTag
 ・AntiGhostBlock
+・AntiMapBan
 ```
 
 Command List:
