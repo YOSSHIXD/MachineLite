@@ -4,11 +4,13 @@
   "package": "com.lite.machinelite.mixin.client",
   "refmap": "mixins.lite.refmap.json",
   "mixins": [
+    "IMixinMapData",
+    "MixinEntityPlayerSP",
+    "MixinGuiEditSign",
+    "MixinGuiIngame",
+    "MixinGuiNewChat",
     "MixinMinecraft",
-    "entity.MixinEntityPlayerSP",
-    "gui.MixinGuiIngame",
-    "gui.MixinGuiNewChat",
-    "gui.inventory.MixinGuiEditSign",
-    "multiplayer.MixinPlayerControllerMP"
+    "MixinNetworkManager",
+    "MixinPlayerControllerMP"
   ]
 }
