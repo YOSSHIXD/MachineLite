@@ -1,5 +1,6 @@
 package com.lite.machinelite.module.impl;
 
+import com.lite.machinelite.MachineLite;
 import com.lite.machinelite.module.Module;
 import net.minecraft.util.text.ITextComponent;
 
@@ -24,8 +25,16 @@ public class AutoSign extends Module {
     }
 
     public void setSignTexts(ITextComponent[] signText) {
-        if (isEnabled() && this.signText == null) {
+        if (this.isEnabled() && this.signText == null) {
             this.signText = signText;
+
+            if (MachineLite.getModuleManager().isEnabled(Debug.class)) {
+                MachineLite.WriteChat("\2477SignTextData:");
+                MachineLite.WriteChat(this.signText[0]);
+                MachineLite.WriteChat(this.signText[1]);
+                MachineLite.WriteChat(this.signText[2]);
+                MachineLite.WriteChat(this.signText[3]);
+            }
         }
     }
 }
