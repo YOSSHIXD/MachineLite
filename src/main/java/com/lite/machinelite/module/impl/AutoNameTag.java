@@ -67,7 +67,7 @@ public class AutoNameTag extends Module {
     public void collectTarget() {
         this.targets.clear();
         for (Entity entity : mc.world.loadedEntityList) {
-            if (mc.player.getDistance(entity) < 3.0F) {
+            if (mc.player.getDistance(entity) < 6.0F) {
                 if (entity instanceof EntityWither) {
                     targets.add((EntityLivingBase) entity);
                 }
