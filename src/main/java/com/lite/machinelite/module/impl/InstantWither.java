@@ -30,7 +30,7 @@ public class InstantWither extends Module {
     @Override
     public void onEvent(Event event) {
         if (event instanceof RightClickMouseEvent) {
-            if (mc.objectMouseOver == null || mc.objectMouseOver.typeOfHit != RayTraceResult.Type.BLOCK || mc.world.getBlockState(mc.objectMouseOver.getBlockPos()).getMaterial() == Material.AIR || delay > 0) {
+            if (mc.objectMouseOver == null || mc.objectMouseOver.typeOfHit != RayTraceResult.Type.BLOCK || mc.world.getBlockState(mc.objectMouseOver.getBlockPos()).getMaterial() == Material.AIR || mc.player.inventory.getCurrentItem().getItem() != Item.getItemFromBlock(Blocks.SOUL_SAND) || delay > 0) {
                 return;
             }
 
