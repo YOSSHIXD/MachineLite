@@ -59,7 +59,7 @@ public class Utils implements IMC {
         return EnumFacing.NORTH;
     }
 
-    public static boolean placeBlock(BlockPos pos) {
+    public static boolean placeBlock(double reach, BlockPos pos) {
         Vec3d eyesPos = new Vec3d(mc.player.posX, mc.player.posY + mc.player.getEyeHeight(), mc.player.posZ);
         final Vec3d posVec = new Vec3d(pos).add(0.5, 0.5, 0.5);
 
@@ -71,14 +71,14 @@ public class Utils implements IMC {
                 final Vec3d hitVec = posVec.add(dirVec.scale(0.5));
                 if (eyesPos.squareDistanceTo(hitVec) <= Math.pow(6.0, 2.0)) {
                     float[] rotations = Utils.getNeededRotations(hitVec);
-                    RayTraceResult traceResult = Utils.rayTraceBlocks(4, rotations[0], rotations[1]);
+                    RayTraceResult traceResult = Utils.rayTraceBlocks(reach, rotations[0], rotations[1]);
 
                     if (traceResult.sideHit != null && traceResult.hitVec != null && traceResult.typeOfHit == RayTraceResult.Type.BLOCK) {
                         if (isBlockContainer(mc.world.getBlockState(neighbor).getBlock())) {
                             mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.START_SNEAKING));
                         }
 
-                        mc.player.connection.sendPacket(new CPacketPlayer.Rotation(rotations[0], rotations[1], mc.player.onGround));
+//                        mc.player.connection.sendPacket(new CPacketPlayer.Rotation(rotations[0], rotations[1], mc.player.onGround));
                         mc.playerController.processRightClickBlock(mc.player, mc.world, neighbor, facing.getOpposite(), hitVec, EnumHand.MAIN_HAND);
                         mc.player.connection.sendPacket(new CPacketAnimation(EnumHand.MAIN_HAND));
 
@@ -87,7 +87,7 @@ public class Utils implements IMC {
                         }
 
                         if (MachineLite.getModuleManager().isEnabled(AntiGhostBlock.class)) {
-                            mc.player.connection.sendPacket(new CPacketPlayerDigging(CPacketPlayerDigging.Action.ABORT_DESTROY_BLOCK, neighbor, EnumFacing.UP));
+                            mc.player.connection.sendPacket(new CPacketPlayerTryUseItemOnBlock(neighbor, facing.getOpposite(), EnumHand.MAIN_HAND, 0, 0, 0));
                         }
                         return true;
                     }
