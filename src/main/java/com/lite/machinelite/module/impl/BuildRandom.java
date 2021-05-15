@@ -3,6 +3,7 @@ package com.lite.machinelite.module.impl;
 import com.lite.machinelite.event.Event;
 import com.lite.machinelite.event.impl.UpdateEvent;
 import com.lite.machinelite.module.Module;
+import com.lite.machinelite.utilities.TimerUtil;
 import com.lite.machinelite.utilities.Utils;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemSkull;
@@ -12,16 +13,13 @@ import net.minecraft.util.math.BlockPos;
 import java.util.Random;
 
 public class BuildRandom extends Module {
-    private final Random random = new Random();
-    private float delay;
+    private final Random random;
+    private final TimerUtil timer;
 
     public BuildRandom(String name, int keyCode) {
         super(name, keyCode);
-    }
-
-    @Override
-    public void onEnabled() {
-        this.delay = 0.0F;
+        random = new Random();
+        timer = new TimerUtil();
     }
 
     @Override
@@ -39,19 +37,20 @@ public class BuildRandom extends Module {
             try {
                 do {
                     pos = new BlockPos(mc.player.getPosition()).add(random.nextInt(bound) - range, random.nextInt(bound) - range, random.nextInt(bound) - range);
-                } while (++attempts < 128 && --delay < 0 && !tryToPlaceBlock(pos));
-            } catch (Exception ignore) {
+                } while (++attempts < 128 && timer.delay(80) && !tryToPlaceBlock(range, pos));
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
 
-    private boolean tryToPlaceBlock(BlockPos pos) {
+    private boolean tryToPlaceBlock(double reach, BlockPos pos) {
         if (pos == null || !mc.world.getBlockState(pos).getMaterial().isReplaceable()) {
             return false;
         }
 
-        if (Utils.placeBlock(pos)) {
-            this.delay = 3.0F;
+        if (Utils.placeBlock(reach, pos)) {
+            timer.reset();
             return true;
         }
 
