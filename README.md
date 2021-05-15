@@ -25,4 +25,5 @@ Command List:
 ・bind
 ・toggle
 ・modulelist
+・clearsigntext
 ```
