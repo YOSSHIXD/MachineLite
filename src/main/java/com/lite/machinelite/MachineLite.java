@@ -25,7 +25,7 @@ import java.util.Arrays;
 public class MachineLite implements IMC {
     public final static String CLIENT_ID = "lite";
     public final static String CLIENT_NAME = "MachineLite";
-    public final static String CLIENT_VERSION = "v1.5";
+    public final static String CLIENT_VERSION = "v1.6";
     private boolean helpNotifier;
 
     private static EventManager eventManager;
