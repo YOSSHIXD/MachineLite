@@ -8,11 +8,10 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class SaveLoad {
-    private final File directory;
     private final File data;
 
     public SaveLoad() throws IOException {
-        directory = new File(IMC.mc.gameDir, MachineLite.CLIENT_NAME);
+        File directory = new File(IMC.mc.gameDir, MachineLite.CLIENT_NAME);
         if (!directory.exists()) {
             directory.mkdir();
         }
@@ -25,7 +24,7 @@ public class SaveLoad {
 
     public void saveFile() {
         ArrayList<String> toSaves = new ArrayList<>();
-        MachineLite.getModuleManager().getModules().forEach(module -> toSaves.add(String.format("Module:%s:%s", module.getName(), module.getKeyCode())));
+        MachineLite.getModuleManager().getModules().forEach(module -> toSaves.add(String.format("Module:%s:%s:%s", module.getName(), module.getKeyCode(), module.isEnabled())));
 
         try {
             PrintWriter pw = new PrintWriter(this.data);
@@ -47,10 +46,15 @@ public class SaveLoad {
 
         for (String s : lines) {
             String[] split = s.split(":");
-            if (s.startsWith("Module:")) {
+
+            if (s.startsWith("Module:") && split.length > 3) {
                 Module module = MachineLite.getModuleManager().getModuleByString(split[1]);
                 if (module != null) {
                     module.setKeyCode(Integer.parseInt(split[2]));
+
+                    if (Boolean.parseBoolean(split[3]) && !module.isEnabled()) {
+                        module.setEnable();
+                    }
                 }
             }
         }
