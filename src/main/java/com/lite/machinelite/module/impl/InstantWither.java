@@ -71,8 +71,9 @@ public class InstantWither extends Module {
     private void placeBlocks(BlockPos pos, int slot) {
         if (mc.world.getBlockState(pos).getMaterial().isReplaceable()) {
             Utils.switchItem(slot);
-            Utils.placeBlock(pos);
+            Utils.placeBlock(4, pos);
             Utils.switchItem(lastSlot);
+            delay = 2;
         }
     }
 }

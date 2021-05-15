@@ -86,7 +86,7 @@ public class AutoHighway extends Module {
                     if (this.positions.size() <= 64) {
                         for (BlockPos pos : this.positions) {
                             if (mc.world.getBlockState(pos).getMaterial().isReplaceable()) {
-                                Utils.placeBlock(pos);
+                                Utils.placeBlock(4, pos);
                             }
                         }
 
