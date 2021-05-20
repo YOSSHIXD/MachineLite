@@ -28,8 +28,9 @@ Command List:
 ・clearsigntext
 ```
   
-  
-  
+# Warning!
+Unauthorized modification or sale is prohibited.
+
 # Machine顧客
 ・驚いたことに  
 ・快適なユーティリティ  
