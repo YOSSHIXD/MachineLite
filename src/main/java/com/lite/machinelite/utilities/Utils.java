@@ -18,10 +18,6 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 
 public class Utils implements IMC {
-    public static Vec3d interpolateEntity(Entity entity, float time) {
-        return new Vec3d(entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * time, entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * time, entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * time);
-    }
-
     public static void switchItem(int slot) {
         if (mc.player.inventory.currentItem != slot) {
             mc.player.inventory.currentItem = slot;
@@ -51,12 +47,12 @@ public class Utils implements IMC {
                 return EnumFacing.WEST;
             case 4:
             case 5:
+            default:
                 return EnumFacing.NORTH;
             case 6:
             case 7:
                 return EnumFacing.EAST;
         }
-        return EnumFacing.NORTH;
     }
 
     public static boolean placeBlock(double reach, BlockPos pos) {

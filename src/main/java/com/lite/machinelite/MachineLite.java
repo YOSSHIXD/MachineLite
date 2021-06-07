@@ -2,7 +2,7 @@ package com.lite.machinelite;
 
 import com.lite.machinelite.command.Command;
 import com.lite.machinelite.command.CommandManager;
-import com.lite.machinelite.config.SaveLoad;
+import com.lite.machinelite.config.Profile;
 import com.lite.machinelite.event.EventManager;
 import com.lite.machinelite.module.ModuleManager;
 import com.lite.machinelite.utilities.IMC;
@@ -16,7 +16,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.input.Keyboard;
 
 import java.util.Arrays;
@@ -31,15 +30,16 @@ public class MachineLite implements IMC {
     private static EventManager eventManager;
     private static ModuleManager moduleManager;
     private static CommandManager commandManager;
-    private static SaveLoad saveLoad;
+    private static Profile profile;
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) throws Exception {
         MinecraftForge.EVENT_BUS.register(this);
+        profile = new Profile();
         (eventManager = new EventManager()).initialize();
         (moduleManager = new ModuleManager()).initialize();
         (commandManager = new CommandManager()).initialize();
-        (saveLoad = new SaveLoad()).loadFile();
+        profile.loadFile();
         helpNotifier = true;
     }
 
@@ -97,15 +97,12 @@ public class MachineLite implements IMC {
         }
     }
 
-    @SubscribeEvent
-    public void updateEvent(TickEvent.ClientTickEvent event) {
-        if (saveLoad != null) {
-            saveLoad.saveFile();
-        }
-    }
-
     public static void WriteChat(Object message) {
         mc.ingameGUI.addChatMessage(ChatType.SYSTEM, new TextComponentString("\2477[\2475Machine \247fLite\2477] \247f" + message.toString()));
+    }
+
+    public static Profile getProfile() {
+        return profile;
     }
 
     public static CommandManager getCommandManager() {

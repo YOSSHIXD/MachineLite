@@ -27,7 +27,7 @@ public class AutoHighway extends Module {
         if (event instanceof UpdateEvent) {
             if (event.isPost()) {
                 if (mc.player.onGround && !mc.player.inventory.getCurrentItem().isEmpty() && mc.player.inventory.getCurrentItem().getItem() instanceof ItemBlock) {
-                    final Vec3d playerPos = Utils.interpolateEntity(mc.player, mc.getRenderPartialTicks());
+                    final Vec3d playerPos = mc.player.getPositionVector();
                     BlockPos originPos = new BlockPos(playerPos.x, playerPos.y + 0.5f, playerPos.z);
 
                     if (positions.isEmpty()) {

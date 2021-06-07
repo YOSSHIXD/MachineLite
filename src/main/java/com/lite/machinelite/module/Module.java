@@ -32,6 +32,7 @@ public class Module implements IMC, Listener {
         this.onEnabled();
         MinecraftForge.EVENT_BUS.register(this);
         MachineLite.getEventManager().register(this);
+        MachineLite.getProfile().saveFile();
     }
 
     public void setDisable() {
@@ -39,6 +40,7 @@ public class Module implements IMC, Listener {
         this.onDisabled();
         MinecraftForge.EVENT_BUS.unregister(this);
         MachineLite.getEventManager().unregister(this);
+        MachineLite.getProfile().saveFile();
     }
 
     public void onEnabled() {}

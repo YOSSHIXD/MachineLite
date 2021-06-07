@@ -7,10 +7,10 @@ import com.lite.machinelite.utilities.IMC;
 import java.io.*;
 import java.util.ArrayList;
 
-public class SaveLoad {
+public class Profile {
     private final File data;
 
-    public SaveLoad() throws IOException {
+    public Profile() throws IOException {
         File directory = new File(IMC.mc.gameDir, MachineLite.CLIENT_NAME);
         if (!directory.exists()) {
             directory.mkdir();
